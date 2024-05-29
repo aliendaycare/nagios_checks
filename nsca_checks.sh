@@ -6,10 +6,11 @@
 # Use the distnsca script in /home/dheid as user "dheid"
 # !!!!!!!!!!!!!!
 #
-# Version 4.5.2
+# Version 4.5.3
 #
 # Revision history
 #
+# 4.5.3 - UPDATED execution of XTRA checks to send errors to the bit bucket
 # 4.5.2 - ADDED check_datalink check for all physical Solaris hosts
 # 4.5.1 - UPDATED MySQL/MariaDB check with better syntax
 # 4.5.0 - UPDATED MySQL/MariaDB check with complete re-write of check logic
@@ -753,7 +754,7 @@ if [ $? -eq 0 ]; then
 			$ECHO_BIN "$HOSTNAME\t$xtra_name\t$code\t$output" >>/tmp/new_nsca_service_data
 			continue
 		fi
-		output=`$SCRIPT_DIR/$xtra_cmd`
+		output=`$SCRIPT_DIR/$xtra_cmd 2>/dev/null`
 		return=$?
 		status=`echo $output |cut -d: -f1 |awk '{print $2}'`
 		case $status in
