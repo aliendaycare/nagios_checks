@@ -15,6 +15,7 @@
 ## visit http://www.gnu.org/licenses/lgpl.html for details.
 #
 ## 2024-05-28: Updates by Dan Heideman to include process areument searching for exact process connection matching
+## 2024-05-29: Also added label for performance stats to match either process name or CLA search pattern
 
 use POSIX;
 use strict;
